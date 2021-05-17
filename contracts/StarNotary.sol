@@ -70,22 +70,26 @@ contract StarNotary is ERC721 {
     // Implement Task 1 Exchange Stars function
     // Add a function called exchangeStars, so 2 users can exchange their star tokens...Do not worry about the price, just write code to exchange stars between users.
     function exchangeStars(uint256 _tokenId1, uint256 _tokenId2) public {
+        address ownerOfToken1 = ownerOf(_tokenId1); // for some reason I have to put these into variables in order to make the condition in "required" to pass ????
+        address ownerOfToken2 = ownerOf(_tokenId2);
         //1. Passing to star tokenId you will need to check if the owner of _tokenId1 or _tokenId2 is the sender
-        require(ownerOf(_tokenId1) ==  msg.sender || ownerOf(_tokenId2) == msg.sender, 'exchangeStars() error');
+        require(ownerOfToken1 ==  msg.sender || ownerOfToken2 == msg.sender, '----> exchangeStars() error');
         //2. You don't have to check for the price of the token (star)
         //3. Get the owner of the two tokens (ownerOf(_tokenId1), ownerOf(_tokenId1)
         //4. Use _transferFrom function to exchange the tokens.
-        transferFrom(ownerOf(_tokenId1), ownerOf(_tokenId2), _tokenId1);
-        transferFrom(ownerOf(_tokenId2), ownerOf(_tokenId1), _tokenId2);
+        transferFrom(ownerOfToken1, ownerOfToken2, _tokenId1);
+        transferFrom(ownerOfToken2, ownerOfToken1, _tokenId2);
     }
 
     // Implement Task 1 Transfer Stars
     // Write a function to Transfer a Star. The function should transfer a star from the address of the caller. The function should accept 2 arguments, the address to transfer the star to, and the token ID of the star.
     function transferStar(address _to1, uint256 _tokenId) public {
         //1. Check if the sender is the ownerOf(_tokenId)
-        require(ownerOf(_tokenId) == msg.sender, 'transferStar() error');
+        address ownerOfToken1 = ownerOf(_tokenId); // same like in line 73 ??
+        require(ownerOfToken1 == msg.sender, '-----> transferStar() error');
         //2. Use the transferFrom(from, to, tokenId); function to transfer the Star
-        transferStar(_to1, _tokenId);
+        // transferStar(_to1, _tokenId); // stack overflow error and couldn't see it for 3 weeks :()
+        transferFrom(ownerOfToken1, _to1, _tokenId);
     }
 
 }
