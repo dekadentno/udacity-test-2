@@ -136,3 +136,21 @@ compilers: {
 ---
 
 Do not use the [Old depreacted zipped starter code](https://s3.amazonaws.com/video.udacity-data.com/topher/2019/January/5c51c4c0_project-5-starter-code/project-5-starter-code.zip)
+
+
+Project Submission Instructions:
+Inside your project folder, create a Readme.md file. The readme.md file should include the following:
+
+Specify the Truffle version and OpenZeppelin version used in the project.
+mlazarevic @ OS442 ~/Desktop/udacity-test-2 (master)
+└─ $ ▶ truffle version
+Truffle v5.3.3 (core: 5.3.3)
+Solidity - 0.8.0 (solc-js)
+Node v12.18.2
+Web3.js v1.3.5
+"@openzeppelin/contracts": "^4.1.0",
+
+
+Your ERC-721 Token Name - Matejtoken
+Your ERC-721 Token Symbol - MTJ
+Your “Token Address” on the Rinkeby Network -   contract address:    0xfb5F83C347281dae030BA6D2c55332A9B9fb1244
